@@ -45,8 +45,15 @@ printCar()
 
 // If you annotate a parameter with "inject", which has no configured bean, an error will be thrown:
 inject('ThisTypeDoesNotExist')
-// => VM2254:3 Uncaught Error: No qualified bean found for the type Carf
+// => VM2254:3 Uncaught Error: No qualified bean found for the type ThisTypeDoesNotExist
 //  at inject (<anonymous>:3:14)
 //  at <anonymous>:1:1
 
+// Another example for a non-existing bean:
+function square(number = inject('Number')) {
+  return number ** 2
+}
+// => VM2254:3 Uncaught Error: No qualified bean found for the type Number
+//  at inject (<anonymous>:3:14)
+//  at <anonymous>:1:1
 ```
